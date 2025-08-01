@@ -15,7 +15,20 @@ connectDB();
 // connectCloudinary();
 
 //middleware
-app.use(cors());
+// app.use(cors());
+
+const cors = require('cors');
+
+app.use(cors({
+  origin: [
+    'https://sentosa25.netlify.app',
+    'https://sentosa-admin.netlify.app',
+    'http://localhost:3000',
+    'http://localhost:5173'
+  ],
+  credentials: true
+}));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true })); 
 
