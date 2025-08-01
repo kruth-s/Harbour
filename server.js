@@ -12,13 +12,8 @@ import albumRouter from './src/routes/albumRoute.js';
 const app = express();
 const port = process.env.PORT || 4000;
 connectDB();
-// connectCloudinary();
 
 //middleware
-// app.use(cors());
-
-const cors = require('cors');
-
 app.use(cors({
   origin: [
     'https://sentosa25.netlify.app',
@@ -32,21 +27,17 @@ app.use(cors({
 app.use(express.json());
 app.use(express.urlencoded({ extended: true })); 
 
-
 //initialising routes
-app.use("/api/song", songRouter)
-app.use("/api/album", albumRouter)
-
-
-
+app.use("/api/song", songRouter);
+app.use("/api/album", albumRouter);
 
 app.get('/', (req, res) => {
-    res.send('API Working');
+  res.send('API Working');
 });
-
 
 //Start the server
-app.listen(port, () => {    
-    console.log(`Server is running on port ${port}`);
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
 });
+
 export default app;
